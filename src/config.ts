@@ -1,4 +1,4 @@
-import type { BundlerConfig } from './types.js'
+import type { BundlerConfig } from './types'
 
 /**
  * Free bundler endpoints for different chains

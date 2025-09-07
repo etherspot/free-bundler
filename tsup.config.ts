@@ -1,4 +1,4 @@
-import { defineConfig } from '@tsup/core'
+import { defineConfig } from 'tsup'
 
 export default defineConfig({
   entry: [

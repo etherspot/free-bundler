@@ -2,7 +2,7 @@ import type { Account, Chain, Transport } from 'viem'
 import { createClient, http } from 'viem'
 import { bundlerActions } from 'viem/account-abstraction'
 
-import type { FreeBundlerClient, CreateFreeBundlerOptions } from './types.js'
+import type { FreeBundlerClient, CreateFreeBundlerOptions } from './types'
 import { DEFAULT_TRANSPORT_OPTIONS, DEFAULT_CLIENT_OPTIONS } from './config.js'
 import { getFreeBundlerUrl, validateChainId } from './utils.js'
 
@@ -71,5 +71,6 @@ export function createFreeBundler<
   })
 
   // Extend with bundler actions
-  return client.extend(bundlerActions)
+  // @ts-ignore - bundlerActions type compatibility issue
+  return client.extend(bundlerActions) as FreeBundlerClient<Transport, chain, account>
 }

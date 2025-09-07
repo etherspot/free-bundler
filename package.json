@@ -7,24 +7,24 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./client": {
+      "types": "./dist/client.d.ts",
       "import": "./dist/client.mjs",
-      "require": "./dist/client.js",
-      "types": "./dist/client.d.ts"
+      "require": "./dist/client.js"
     },
     "./config": {
+      "types": "./dist/config.d.ts",
       "import": "./dist/config.mjs",
-      "require": "./dist/config.js",
-      "types": "./dist/config.d.ts"
+      "require": "./dist/config.js"
     },
     "./utils": {
+      "types": "./dist/utils.d.ts",
       "import": "./dist/utils.mjs",
-      "require": "./dist/utils.js",
-      "types": "./dist/utils.d.ts"
+      "require": "./dist/utils.js"
     }
   },
   "files": [
@@ -70,7 +70,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.0.0",
-    "tsup": "^8.0.0",
+    "tsup": "^8.5.0",
     "typescript": "^5.0.0"
   },
   "engines": {

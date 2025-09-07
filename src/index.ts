@@ -1,4 +1,4 @@
-export * from './types.js'
+export * from './types'
 export * from './config.js'
 export * from './utils.js'
 export * from './client.js'

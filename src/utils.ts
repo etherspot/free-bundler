@@ -1,5 +1,5 @@
 import { FREE_BUNDLER_URLS, BUNDLER_CONFIGS } from './config.js'
-import type { BundlerConfig } from './types.js'
+import type { BundlerConfig } from './types'
 
 /**
  * Get the preconfigured bundler URL for a given chain ID
