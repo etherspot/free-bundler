@@ -1,0 +1,80 @@
+{
+  "name": "@etherspot/free-bundler",
+  "version": "1.0.0",
+  "description": "Free bundler client for ERC-4337 account abstraction with preconfigured endpoints",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.mjs",
+      "require": "./dist/client.js"
+    },
+    "./config": {
+      "types": "./dist/config.d.ts",
+      "import": "./dist/config.mjs",
+      "require": "./dist/config.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/utils.mjs",
+      "require": "./dist/utils.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun run tsup",
+    "dev": "bun run tsup --watch",
+    "test": "bun test",
+    "test:coverage": "bun test --coverage",
+    "lint": "bunx eslint src/**/*.ts",
+    "lint:fix": "bunx eslint src/**/*.ts --fix",
+    "typecheck": "bun run tsc --noEmit",
+    "prepublishOnly": "bun run build && bun test && bun run typecheck"
+  },
+  "keywords": [
+    "ethereum",
+    "account-abstraction",
+    "erc-4337",
+    "bundler",
+    "viem",
+    "etherspot",
+    "free",
+    "web3"
+  ],
+  "author": "Etherspot Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etherspot/free-bundler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/etherspot/free-bundler/issues"
+  },
+  "homepage": "https://github.com/etherspot/free-bundler#readme",
+  "peerDependencies": {
+    "viem": "^2.37.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  }
+}
