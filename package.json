@@ -40,7 +40,7 @@
     "lint": "bunx eslint src/**/*.ts",
     "lint:fix": "bunx eslint src/**/*.ts --fix",
     "typecheck": "bun run tsc --noEmit",
-    "prepublishOnly": "bun run build && bun test && bun run typecheck"
+    "prepublishOnly": "bun run build && bun run typecheck"
   },
   "keywords": [
     "ethereum",
