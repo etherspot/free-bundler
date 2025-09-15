@@ -1,6 +1,6 @@
 import type { Account, Chain, Transport } from 'viem'
 import { createClient, http } from 'viem'
-import { bundlerActions } from 'viem/account-abstraction'
+import { bundlerActions, SmartAccount } from 'viem/account-abstraction'
 
 import type { FreeBundlerClient, CreateFreeBundlerOptions } from './types'
 import { DEFAULT_TRANSPORT_OPTIONS, DEFAULT_CLIENT_OPTIONS } from './config.js'
@@ -17,10 +17,10 @@ import { getFreeBundlerUrl, validateChainId } from './utils.js'
  * ```typescript
  * import { createFreeBundler } from '@etherspot/free-bundler'
  * 
- * // Create bundler client for Ethereum Sepolia
+ * Create bundler client for Ethereum Sepolia
  * const bundlerClient = createFreeBundler(11155111)
  * 
- * // Create bundler client for Polygon with custom transport options
+ * Create bundler client for Polygon with custom transport options
  * const bundlerClient = createFreeBundler(137, {
  *   transport: {
  *     timeout: 10000,
@@ -28,13 +28,13 @@ import { getFreeBundlerUrl, validateChainId } from './utils.js'
  *   }
  * })
  * 
- * // Use the bundler client
+ * Use the bundler client
  * const userOperation = await bundlerClient.sendUserOperation({
  *   userOperation: {
  *     sender: '0x...',
  *     nonce: 0n,
  *     callData: '0x...',
- *     // ... other fields
+ *     ... other fields
  *   },
  *   entryPoint: '0x...'
  * })
@@ -42,7 +42,7 @@ import { getFreeBundlerUrl, validateChainId } from './utils.js'
  */
 export function createFreeBundler<
   chain extends Chain | undefined = undefined,
-  account extends Account | undefined = undefined,
+  account extends SmartAccount | undefined = undefined,
 >(
   chainId: number,
   options: CreateFreeBundlerOptions<chain, account> = {}
@@ -71,6 +71,5 @@ export function createFreeBundler<
   })
 
   // Extend with bundler actions
-  // @ts-ignore - bundlerActions type compatibility issue
   return client.extend(bundlerActions) as FreeBundlerClient<Transport, chain, account>
 }

@@ -1,11 +1,11 @@
-import type { Account, Chain, Client, Transport } from 'viem'
-import type { BundlerActions } from 'viem/account-abstraction'
+import type { Chain, Client, RpcSchema, Transport } from 'viem'
+import type { BundlerActions, SmartAccount } from 'viem/account-abstraction'
 
 export type FreeBundlerClient<
   transport extends Transport = Transport,
   chain extends Chain | undefined = Chain | undefined,
-  account extends Account | undefined = Account | undefined,
-> = Client<transport, chain, account, any>
+  account extends SmartAccount | undefined = SmartAccount | undefined,
+> = Client<transport, chain, account, RpcSchema, BundlerActions>
 
 export interface TransportOptions {
   timeout?: number
@@ -20,7 +20,7 @@ export interface ClientOptions {
 
 export interface CreateFreeBundlerOptions<
   chain extends Chain | undefined = undefined,
-  account extends Account | undefined = undefined,
+  account extends SmartAccount | undefined = undefined,
 > {
   /** Custom bundler URL to override default */
   bundlerUrl?: string
