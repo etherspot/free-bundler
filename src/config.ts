@@ -5,23 +5,23 @@ import type { BundlerConfig } from './types'
  */
 export const FREE_BUNDLER_URLS: Record<number, string> = {
   // Ethereum Mainnet
-  1: 'https://bundler.etherspot.io/1/',
+  1: 'https://bundler.etherspot.io/1',
   
   // Ethereum Sepolia
-  11155111: 'https://bundler.etherspot.io/11155111/',
+  11155111: 'https://bundler.etherspot.io/11155111',
 
   
   // Arbitrum One
-  42161: 'https://bundler.etherspot.io/42161/',
+  42161: 'https://bundler.etherspot.io/42161',
   
   // Arbitrum Sepolia
-  421614: 'https://bundler.etherspot.io/421614/',
+  421614: 'https://bundler.etherspot.io/421614',
   
   // Optimism Mainnet
-  10: 'https://bundler.etherspot.io/10/',
+  10: 'https://bundler.etherspot.io/10',
   
   // Optimism Sepolia
-  11155420: 'https://bundler.etherspot.io/11155420/',
+  11155420: 'https://bundler.etherspot.io/11155420',
   
 } as const
 
