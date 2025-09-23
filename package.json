@@ -1,6 +1,7 @@
 {
   "name": "@etherspot/free-bundler",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
+  "type": "module",
   "description": "Free bundler client for ERC-4337 account abstraction with preconfigured endpoints",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -67,11 +68,13 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "@types/yargs": "^17.0.33",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.0.0",
     "tsup": "^8.5.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "yargs": "^18.0.0"
   },
   "engines": {
     "node": ">=18.0.0",
