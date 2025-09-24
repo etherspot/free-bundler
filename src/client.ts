@@ -41,17 +41,16 @@ import { getFreeBundlerUrl, validateChainId } from './utils.js'
  * ```
  */
 export function createFreeBundler<
-  chain extends Chain | undefined = undefined,
+  chain extends Chain,
   account extends SmartAccount | undefined = undefined,
 >(
-  chainId: number,
-  options: CreateFreeBundlerOptions<chain, account> = {}
+  options: CreateFreeBundlerOptions<chain, account>
 ): FreeBundlerClient<Transport, chain, account> {
   // Get bundler URL from options or use preconfigured free endpoint
-  const bundlerUrl = options.bundlerUrl || getFreeBundlerUrl(chainId)
-  
+  const bundlerUrl = options.bundlerUrl || getFreeBundlerUrl(options.chain.id)
+
   if (!bundlerUrl) {
-    validateChainId(chainId)
+    validateChainId(options.chain.id)
   }
 
   // Create HTTP transport with configuration

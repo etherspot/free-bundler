@@ -8,15 +8,12 @@ import { privateKeyToAccount } from "viem/accounts";
 import {
     http,
     parseUnits,
-    createClient,
     publicActions,
     walletActions,
     SignAuthorizationReturnType,
     Hex,
     Chain
 } from "viem";
-import { FREE_BUNDLER_URLS } from "../../src/config.js";
-
 
 export default async (
     {
@@ -36,26 +33,19 @@ export default async (
 ) => {
     const owner = privateKeyToAccount(privateKey);
 
-    const client = createClient({
-        account: owner,
-        transport: http(rpcUrl || FREE_BUNDLER_URLS[chain.id]),
-        chain
-    }).extend(publicActions).extend(walletActions);
+    const bundlerClient = createFreeBundler({chain})
+                            .extend(walletActions)
+                            .extend(publicActions);
 
     const smartAccount: ToSimple7702SmartAccountReturnType = await toSimple7702SmartAccount({
-        client,
+        client: bundlerClient,
         owner,
     });
 
     console.log("wallet:: ", smartAccount.address);
 
-    const bundlerClient = createFreeBundler(
-        chain.id,
-        {account: smartAccount, chain}
-    );
-
     // check sender's code to decide if eip7702Auth tuple is necessary for userOp.
-    const senderCode = await client.getCode({
+    const senderCode = await bundlerClient.getCode({
         address: smartAccount.address
     });
 
@@ -63,7 +53,7 @@ export default async (
     const { address: delegateAddress } = smartAccount.authorization;
 
     if(senderCode !== `0xef0100${delegateAddress.toLowerCase().substring(2)}`) {
-        authorization = await client.signAuthorization(smartAccount.authorization)
+        authorization = await bundlerClient.signAuthorization(smartAccount.authorization)
     }
 
     const paymasterClient = paymasterUrl ? createPaymasterClient({
@@ -71,6 +61,7 @@ export default async (
     }) : undefined;
 
     const userOpHash = await bundlerClient.sendUserOperation({
+        account: smartAccount,
         authorization,
         calls: [
             {to: "0x09FD4F6088f2025427AB1e89257A44747081Ed59", value: parseUnits('0.0000001', 18)}
