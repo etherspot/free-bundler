@@ -1,6 +1,6 @@
 {
   "name": "@etherspot/free-bundler",
-  "version": "1.0.1-alpha.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Free bundler client for ERC-4337 account abstraction with preconfigured endpoints",
   "main": "dist/index.js",
@@ -64,7 +64,7 @@
   },
   "homepage": "https://github.com/etherspot/free-bundler#readme",
   "peerDependencies": {
-    "viem": "^2.37.4"
+    "viem": "2.37.8"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

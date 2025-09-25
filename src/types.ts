@@ -19,13 +19,13 @@ export interface ClientOptions {
 }
 
 export interface CreateFreeBundlerOptions<
-  chain extends Chain | undefined = undefined,
+  chain extends Chain,
   account extends SmartAccount | undefined = undefined,
 > {
   /** Custom bundler URL to override default */
   bundlerUrl?: string
   /** Chain configuration */
-  chain?: chain
+  chain: chain
   /** Account configuration */
   account?: account
   /** Transport configuration options */

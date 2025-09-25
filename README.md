@@ -28,12 +28,14 @@ pnpm add @etherspot/free-bundler viem
 
 ```typescript
 import { createFreeBundler } from '@etherspot/free-bundler'
+import { mainnet } from 'viem/chains'
 
 // Create bundler client for Ethereum Sepolia
-const bundlerClient = createFreeBundler(11155111)
+const bundlerClient = createFreeBundler({ chain: mainnet })
 
 // Send a user operation
 const hash = await bundlerClient.sendUserOperation({
+  account,
   userOperation: {
     sender: '0x...',
     nonce: 0n,
@@ -89,16 +91,15 @@ bun run lint:fix
 
 ## API Reference
 
-### `createFreeBundler(chainId, options?)`
+### `createFreeBundler(options)`
 
 Creates a bundler client with preconfigured settings.
 
 #### Parameters
 
-- `chainId` (number): Target blockchain chain ID
 - `options` (object, optional):
   - `bundlerUrl?` (string): Custom bundler URL
-  - `chain?` (Chain): Viem chain configuration
+  - `chain` (Chain): Viem chain configuration
   - `account?` (Account): Viem account configuration
   - `transport?` (object): HTTP transport options
     - `timeout?` (number): Request timeout in ms (default: 30000)
@@ -138,20 +139,22 @@ const name = getChainName(1) // 'Ethereum Mainnet'
 ### Custom Transport Configuration
 
 ```typescript
-const bundlerClient = createFreeBundler(137, {
+const bundlerClient = createFreeBundler({
   transport: {
     timeout: 15000,
     retryCount: 5,
     retryDelay: 200
-  }
+  },
+  chain: mainnet
 })
 ```
 
 ### Custom Bundler URL
 
 ```typescript
-const bundlerClient = createFreeBundler(1, {
-  bundlerUrl: 'https://your-custom-bundler.com'
+const bundlerClient = createFreeBundler({
+  bundlerUrl: 'https://your-custom-bundler.com',
+  chain: mainnet
 })
 ```
 
@@ -164,7 +167,7 @@ import { privateKeyToAccount } from 'viem/accounts'
 
 const account = privateKeyToAccount('0x...')
 
-const bundlerClient = createFreeBundler(1, {
+const bundlerClient = createFreeBundler({
   chain: mainnet,
   account,
   client: {
