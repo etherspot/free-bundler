@@ -64,7 +64,7 @@
   },
   "homepage": "https://github.com/etherspot/free-bundler#readme",
   "peerDependencies": {
-    "viem": "^2.37.4"
+    "viem": "2.37.8"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
