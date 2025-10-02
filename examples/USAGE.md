@@ -6,16 +6,14 @@ This guide provides example commands for running user operations (userops) using
 
 - Node.js >= 18.0.0 or Bun >= 1.0.0
 - A private key for the smart account
-- RPC URL for the target chain (optional, defaults to free bundler endpoints)
 
 ## Command Line Arguments
 
 The example script accepts the following command line arguments:
 
-- `--chain-id` (required): Chain ID for the userop
-- `--account-type` (required): Type of smart account implementation
+- `--chain-id` (optional): Chain ID for the userop, defaults to 11155111
+- `--account-type` (optional): Type of smart account implementation, defaults to `simple7702`
 - `--private-key` (required): Private key that controls the smart account
-- `--rpc-url` (optional): RPC URL for the chain
 - `--paymaster-url` (optional): Paymaster URL to sponsor user ops
 - `--paymaster-context` (optional): JSON string for paymaster context
 
@@ -37,7 +35,6 @@ bun run ./examples/index.ts \
   --chain-id 10 \
   --account-type simple7702 \
   --private-key "0x..." \
-  --rpc-url "https://optimism-mainnet.infura.io/v3/YOUR_INFURA_KEY"
 ```
 
 ### 3. UserOp on Optimism with Paymaster
