@@ -6,7 +6,6 @@ import { Hex } from "viem";
 export const main = async () => {
     const {
         chainId,
-        rpcUrl,
         accountType,
         paymasterContext,
         paymasterUrl,
@@ -21,8 +20,7 @@ export const main = async () => {
                 chain,
                 privateKey: privateKey as Hex,
                 paymasterContext,
-                paymasterUrl,
-                rpcUrl
+                paymasterUrl
             })
         default:
             throw new Error(`Unsupported account type: ${accountType}`);

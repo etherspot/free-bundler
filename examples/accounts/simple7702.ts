@@ -3,7 +3,8 @@ import {
     toSimple7702SmartAccount,
     ToSimple7702SmartAccountReturnType
 } from "viem/account-abstraction";
-import { createFreeBundler } from "../../src/client.js"
+// use import { createFreeBundler } from '@etherspot/free-bundler' when using it as a dependency.
+import { createFreeBundler } from "../../src/client.js"; 
 import { privateKeyToAccount } from "viem/accounts";
 import {
     http,
@@ -21,7 +22,6 @@ export default async (
         paymasterContext,
         paymasterUrl,
         privateKey,
-        rpcUrl
     }:
     {
         chain: Chain,
@@ -63,6 +63,7 @@ export default async (
     const userOpHash = await bundlerClient.sendUserOperation({
         account: smartAccount,
         authorization,
+        // replace with your own calls
         calls: [
             {to: "0x09FD4F6088f2025427AB1e89257A44747081Ed59", value: parseUnits('0.0000001', 18)}
         ],
