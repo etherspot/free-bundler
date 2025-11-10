@@ -38,9 +38,12 @@ export default async (
                             .extend(publicActions);
 
     const smartAccount: ToSimple7702SmartAccountReturnType = await toSimple7702SmartAccount({
+        implementation: "0xBC3926fE3D052f5451af02bA04e134EdcB741977",
         client: bundlerClient,
         owner,
     });
+    // overriding for ep9 address
+    smartAccount.entryPoint.address = "0x43370900c8de573dB349BEd8DD53b4Ebd3Cce709"
 
     console.log("wallet:: ", smartAccount.address);
 
@@ -65,7 +68,7 @@ export default async (
         authorization,
         // replace with your own calls
         calls: [
-            {to: "0x09FD4F6088f2025427AB1e89257A44747081Ed59", value: parseUnits('0.0000001', 18)}
+            {to: "0x09FD4F6088f2025427AB1e89257A44747081Ed59", value: parseUnits("0.00001", 18)}
         ],
         paymaster: paymasterClient,
         paymasterContext: paymasterContext ? JSON.parse(paymasterContext) : undefined,
