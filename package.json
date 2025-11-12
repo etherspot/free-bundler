@@ -4,27 +4,27 @@
   "type": "module",
   "description": "Free bundler client for ERC-4337 account abstraction with preconfigured endpoints",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
     "./client": {
       "types": "./dist/client.d.ts",
-      "import": "./dist/client.mjs",
+      "import": "./dist/client.js",
       "require": "./dist/client.js"
     },
     "./config": {
       "types": "./dist/config.d.ts",
-      "import": "./dist/config.mjs",
+      "import": "./dist/config.js",
       "require": "./dist/config.js"
     },
     "./utils": {
       "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.mjs",
+      "import": "./dist/utils.js",
       "require": "./dist/utils.js"
     }
   },
