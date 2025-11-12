@@ -1,6 +1,6 @@
 {
   "name": "@etherspot/free-bundler",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "Free bundler client for ERC-4337 account abstraction with preconfigured endpoints",
   "main": "dist/index.js",
