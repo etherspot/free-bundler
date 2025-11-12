@@ -6,7 +6,7 @@ A TypeScript library for creating ERC-4337 bundler clients with preconfigured fr
 ## Features
 
 - 🚀 **Zero Configuration** - Works out of the box with free Etherspot bundlers
-- 🌐 **Multi-Chain Support** - Ethereum, Polygon, Arbitrum, Optimism, Base
+- 🌐 **Multi-Chain Support** - Ethereum, Arbitrum, Optimism
 - 🔧 **Fully Configurable** - Override any default settings
 - 📦 **TypeScript First** - Full type safety with viem integration
 - 🎯 **Tree Shakeable** - Import only what you need
@@ -35,14 +35,14 @@ const bundlerClient = createFreeBundler({ chain: mainnet })
 
 // Send a user operation
 const hash = await bundlerClient.sendUserOperation({
-  account,
+  smartAccount,
   userOperation: {
     sender: '0x...',
     nonce: 0n,
     callData: '0x...',
     // ... other fields
   },
-  entryPoint: '0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789'
+  entryPoint: '0x43370900c8de573dB349BEd8DD53b4Ebd3Cce709'
 })
 ```
 
@@ -80,14 +80,9 @@ bun run lint:fix
 |-------|----------|---------|
 | Ethereum | 1 | Mainnet |
 | Ethereum Sepolia | 11155111 | Testnet |
-| Polygon | 137 | Mainnet |
-| Polygon Mumbai | 80001 | Testnet |
-| Arbitrum One | 42161 | Mainnet |
 | Arbitrum Sepolia | 421614 | Testnet |
 | Optimism | 10 | Mainnet |
 | Optimism Sepolia | 11155420 | Testnet |
-| Base | 8453 | Mainnet |
-| Base Sepolia | 84532 | Testnet |
 
 ## API Reference
 
@@ -100,7 +95,7 @@ Creates a bundler client with preconfigured settings.
 - `options` (object, optional):
   - `bundlerUrl?` (string): Custom bundler URL
   - `chain` (Chain): Viem chain configuration
-  - `account?` (Account): Viem account configuration
+  - `account?` (Smart Account): Viem smart account configuration
   - `transport?` (object): HTTP transport options
     - `timeout?` (number): Request timeout in ms (default: 30000)
     - `retryCount?` (number): Number of retries (default: 3)
@@ -124,7 +119,7 @@ import {
 } from '@etherspot/free-bundler'
 
 // Check supported chains
-const chainIds = getSupportedChainIds() // [1, 11155111, 137, ...]
+const chainIds = getSupportedChainIds() // [1, 11155111, ...]
 const isSupported = isChainSupported(1) // true
 
 // Get chain information
@@ -163,9 +158,9 @@ const bundlerClient = createFreeBundler({
 ```typescript
 import { createFreeBundler } from '@etherspot/free-bundler'
 import { mainnet } from 'viem/chains'
-import { privateKeyToAccount } from 'viem/accounts'
+import { toSmartAccount } from 'viem/account-abstraction'
 
-const account = privateKeyToAccount('0x...')
+const account = toSmartAccount({...});
 
 const bundlerClient = createFreeBundler({
   chain: mainnet,
