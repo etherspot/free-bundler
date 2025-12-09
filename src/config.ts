@@ -9,7 +9,6 @@ export const FREE_BUNDLER_URLS: Record<number, string> = {
   
   // Ethereum Sepolia
   11155111: 'https://rpc.erc4337.io/11155111',
-
   
   // Arbitrum One
   42161: 'https://rpc.erc4337.io/42161',
@@ -22,6 +21,12 @@ export const FREE_BUNDLER_URLS: Record<number, string> = {
   
   // Optimism Sepolia
   11155420: 'https://rpc.erc4337.io/11155420',
+
+  // Base Mainnet
+  8453: 'https://rpc.erc4337.io/8453',
+
+  // Base Sepolia
+  84532: 'https://rpc.erc4337.io/84532'
   
 } as const
 
@@ -65,6 +70,18 @@ export const BUNDLER_CONFIGS: Record<number, BundlerConfig> = {
     url: FREE_BUNDLER_URLS[11155420],
     isTestnet: true,
   },
+  8453: {
+    chainId: 8453,
+    name: 'Base Mainnet',
+    url: FREE_BUNDLER_URLS[8453],
+    isTestnet: false
+  },
+  84532: {
+    chainId: 84532,
+    name: 'Base Mainnet',
+    url: FREE_BUNDLER_URLS[84532],
+    isTestnet: true
+  }
 } as const
 
 /**
