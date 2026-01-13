@@ -42,3 +42,10 @@ jobs:
           else
             echo "CHANGELOG.md has not been changed." && exit 1
           fi
+      - name: Comment when CHANGELOG.md missing
+        if: failure() && steps.changelog-status.outcome == 'failure'
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **Heads up! You forgot to update CHANGELOG.md**
+          allow-repeats: true
