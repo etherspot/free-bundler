@@ -32,13 +32,29 @@ jobs:
         if: steps.check.outputs.changed == 'false'
         run: echo "No version change :/ Please update version in package.json!" && exit 1
       - name: Check if CHANGELOG.md is updated
-        id: changelog-status
+        id: changelog-check
         run: |
           git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
-          changed_files=$(git diff --name-only ${{ github.base_ref }} ${{ github.sha }} | grep CHANGELOG.md)
+          changed_files=$(git diff --name-only ${{ github.base_ref }} ${{ github.sha }} | grep CHANGELOG.md || true)
           if [ -n "$changed_files" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
             echo "CHANGELOG.md has been changed."
             echo "$changed_files"
           else
-            echo "CHANGELOG.md has not been changed." && exit 1
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "CHANGELOG.md has not been changed."
           fi
+      - name: Log when CHANGELOG.md is updated
+        if: steps.changelog-check.outputs.changed == 'true'
+        run: 'echo "Great! CHANGELOG.md has been updated."'
+      - name: Comment when CHANGELOG.md is not updated
+        if: steps.changelog-check.outputs.changed == 'false'
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **Don't forget to update CHANGELOG.md!**
+            Please document your changes in the CHANGELOG.md file.
+          allow-repeats: true
+      - name: Exit if CHANGELOG.md is not updated
+        if: steps.changelog-check.outputs.changed == 'false'
+        run: echo "CHANGELOG.md has not been updated! Please add your changes to CHANGELOG.md" && exit 1
