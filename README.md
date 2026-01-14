@@ -80,9 +80,19 @@ bun run lint:fix
 |-------|----------|---------|
 | Ethereum | 1 | Mainnet |
 | Ethereum Sepolia | 11155111 | Testnet |
+| Arbitrum | 42161 | Mainnet |
 | Arbitrum Sepolia | 421614 | Testnet |
 | Optimism | 10 | Mainnet |
 | Optimism Sepolia | 11155420 | Testnet |
+| Base | 8453 | Mainnet |
+| Base Sepolia | 84532 | Testnet |
+| Unichain | 130 | Mainnet |
+| Unichain Sepolia | 1301 | Testnet |
+| World Chain | 480 | Mainnet |
+| World Chain Sepolia | 4801 | Testnet |
+| Linea | 59144 | Mainnet |
+| Linea Sepolia | 59141 | Testnet |
+
 
 ## API Reference
 
