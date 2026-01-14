@@ -9,7 +9,6 @@ export const FREE_BUNDLER_URLS: Record<number, string> = {
   
   // Ethereum Sepolia
   11155111: 'https://rpc.erc4337.io/11155111',
-
   
   // Arbitrum One
   42161: 'https://rpc.erc4337.io/42161',
@@ -22,7 +21,30 @@ export const FREE_BUNDLER_URLS: Record<number, string> = {
   
   // Optimism Sepolia
   11155420: 'https://rpc.erc4337.io/11155420',
+
+  // Base Mainnet
+  8453: 'https://rpc.erc4337.io/8453',
+
+  // Base Sepolia
+  84532: 'https://rpc.erc4337.io/84532',
+
+  // Unichain Mainnet
+  130: 'https://rpc.erc4337.io/130',
+
+  // Unichain Sepolia
+  1301: 'https://rpc.erc4337.io/1301',
+
+  // Worldchain Mainnet
+  480: 'https://rpc.erc4337.io/480',
+
+  // Worldchain Sepolia
+  4801: 'https://rpc.erc4337.io/4801',
   
+  // Linea Mainnet
+  59144: 'https://rpc.erc4337.io/59144',
+
+  // Linea Sepolia
+  59141: 'https://rpc.erc4337.io/59141'
 } as const
 
 /**
@@ -65,6 +87,54 @@ export const BUNDLER_CONFIGS: Record<number, BundlerConfig> = {
     url: FREE_BUNDLER_URLS[11155420],
     isTestnet: true,
   },
+  8453: {
+    chainId: 8453,
+    name: 'Base Mainnet',
+    url: FREE_BUNDLER_URLS[8453],
+    isTestnet: false
+  },
+  84532: {
+    chainId: 84532,
+    name: 'Base Mainnet',
+    url: FREE_BUNDLER_URLS[84532],
+    isTestnet: true
+  },
+  130: {
+    chainId: 130,
+    name: 'Unichain',
+    url: FREE_BUNDLER_URLS[130],
+    isTestnet: false
+  },
+  1301: {
+    chainId: 1301,
+    name: 'Unichain Sepolia',
+    url: FREE_BUNDLER_URLS[1301],
+    isTestnet: true
+  },
+  480: {
+    chainId: 480,
+    name: 'World Chain',
+    url: FREE_BUNDLER_URLS[480],
+    isTestnet: false
+  },
+  4801: {
+    chainId: 4801,
+    name: 'World Chain Sepolia',
+    url: FREE_BUNDLER_URLS[4801],
+    isTestnet: true
+  },
+  59144: {
+    chainId: 59144,
+    name: 'Linea',
+    url: FREE_BUNDLER_URLS[59144],
+    isTestnet: false
+  },
+  59141: {
+    chainId: 59141,
+    name: 'Linea Sepolia',
+    url: FREE_BUNDLER_URLS[59141],
+    isTestnet: true
+  }
 } as const
 
 /**
