@@ -38,8 +38,13 @@ export const FREE_BUNDLER_URLS: Record<number, string> = {
   480: 'https://rpc.erc4337.io/480',
 
   // Worldchain Sepolia
-  4801: 'https://rpc.erc4337.io/4801'
+  4801: 'https://rpc.erc4337.io/4801',
   
+  // Linea Mainnet
+  59144: 'https://rpc.erc4337.io/59144',
+
+  // Linea Sepolia
+  59141: 'https://rpc.erc4337.io/59141'
 } as const
 
 /**
@@ -116,6 +121,18 @@ export const BUNDLER_CONFIGS: Record<number, BundlerConfig> = {
     chainId: 4801,
     name: 'World Chain Sepolia',
     url: FREE_BUNDLER_URLS[4801],
+    isTestnet: true
+  },
+  59144: {
+    chainId: 59144,
+    name: 'Linea',
+    url: FREE_BUNDLER_URLS[59144],
+    isTestnet: false
+  },
+  59141: {
+    chainId: 59141,
+    name: 'Linea Sepolia',
+    url: FREE_BUNDLER_URLS[59141],
     isTestnet: true
   }
 } as const
