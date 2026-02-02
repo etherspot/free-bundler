@@ -95,7 +95,7 @@ export const BUNDLER_CONFIGS: Record<number, BundlerConfig> = {
   },
   84532: {
     chainId: 84532,
-    name: 'Base Mainnet',
+    name: 'Base Sepolia',
     url: FREE_BUNDLER_URLS[84532],
     isTestnet: true
   },
